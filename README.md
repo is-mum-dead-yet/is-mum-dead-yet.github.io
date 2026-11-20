@@ -22,6 +22,8 @@ The site is published via GitHub Pages from `main` at [is-mum-dead-yet.github.io
 
 The [real-life questions](https://is-mum-dead-yet.github.io/questions.html) page explains the doorbell, visitor, trolley, lamp-button, phone-battery and privacy scenarios behind the project, including limitations and experimental status.
 
+The [development diary](https://is-mum-dead-yet.github.io/diary.html) tells the story of the experiment in approachable, stage-by-stage chapters. The first published chapter, [Prelude: It started with a lamp](https://is-mum-dead-yet.github.io/diary-prelude.html), describes the everyday Tapo button experience. The Day 1 beacon chapter remains forthcoming until its story is written. Keep private care details, addresses, household event logs and device credentials out of the public diary.
+
 ## Direction
 
 - Warm, irreverent artwork and genuinely useful explanatory content.
