@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9ed">
+  <meta name="description" content="Day 2 of the HomePulse development diary: a 3:30am start, a few physical tests, and an AI agent connecting a smart hub, door sensors, button, doorbell and camera into one timeline.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Day 2: Connecting the House | Is Mum Dead Yet?">
+  <meta property="og:description" content="A few gadgets, an early morning, and a home bench that finally started telling one story.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="questions.css">
+  <link rel="stylesheet" href="diary.css">
+  <title>Day 2: Connecting the House | Is Mum Dead Yet?</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="shell header-inner">
+    <a class="wordmark" href="index.html" aria-label="Is Mum Dead Yet? home"><span class="pulse-mark" aria-hidden="true">♡</span> <span>Is Mum Dead Yet<span class="accent">?</span></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html#idea">The idea</a>
+      <a href="questions.html">Real-life questions</a>
+      <a href="index.html#how-it-works">How it works</a>
+      <a href="diary.html" aria-current="page">Development diary</a>
+      <a class="nav-pill" href="index.html#build">Build your own <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div></header>
+  <main id="main">
+    <article>
+      <header class="diary-article-hero"><div class="shell">
+        <a class="diary-back" href="diary.html">← All diary chapters</a>
+        <div class="eyebrow"><span class="sparkle" aria-hidden="true">✳</span> THE DEVELOPMENT DIARY / DAY 2</div>
+        <h1>Connecting <span>the house.</span></h1>
+        <p class="diary-handwritten handwritten">Before the family woke up. ♡</p>
+        <p class="diary-article-lead">A very early start, some smart-home gadgets, and an AI agent that mostly just needed me to press the occasional button.</p>
+      </div></header>
+
+      <div class="diary-prose">
+        <p>I had a new van coming later that day, which was rather exciting. So, naturally, I couldn't sleep.</p>
+        <p>At half past three in the morning I was downstairs, with the rest of the family still fast asleep and a perfectly good excuse to get on with HomePulse.</p>
+        <p>Day 1 had left us with a Raspberry Pi and five little Bluetooth receivers sending readings from a beacon. Today I wanted the other gadgets to start talking to the same system: a Tapo hub, door sensors, a button, a doorbell and an outdoor camera.</p>
+        <p>Not installed at Mum's yet. This was all on my own home test bench, where we could make mistakes and find problems without disturbing anything she already relies on.</p>
+
+        <h2>First, I asked the agent what was next</h2>
+        <p>I started by asking my AI engineering agent to update the project tickets and comments so that the work we'd done was properly recorded.</p>
+        <p>Then I asked it to read the brief and tell me what came next.</p>
+        <p>It didn't give me a great long programming exercise. It just wanted the equipment switched on, paired in the Tapo app and ready for testing.</p>
+        <p>So I powered up the doorbell, paired it with the Tapo setup and checked the hub's chime. I activated a spare smart button, paired two door contacts and gave them names in the app.</p>
+        <p>It was the sort of setup anybody could do with a phone and a handful of gadgets. The complicated work was happening elsewhere.</p>
+
+        <h2>An SD card with a previous life</h2>
+        <p>There was one small snag: I'd forgotten I needed a memory card for the doorbell.</p>
+        <p>The card I had available was one of my disaster recovery cards. I wasn't about to casually overwrite that.</p>
+        <p>So I asked the agent to take a complete image of it first. It preserved the contents, told me when the backup was ready, and only then did I remove the card and format it for the doorbell through the Tapo app.</p>
+        <p>A little detour, but exactly the sort of engineering habit that matters. Getting something new working shouldn't mean losing something you might need later.</p>
+
+        <h2>“Could you go and wave at the camera?”</h2>
+        <p>With the devices paired, I confirmed what I'd done and asked if the agent needed anything else.</p>
+        <p>It did. It wanted a set of deliberate physical events so it could compare what happened in the real world with what HomePulse recorded.</p>
+        <p>Walk outside and wave at the camera. Come in and press the doorbell. Press the smart button. Open and close a door contact.</p>
+        <p>I also checked that the doorbell made an audible sound and that the hub chimed as expected.</p>
+        <p>Then I could leave it to inspect the results, configure the collectors and carry on testing. At one point, I simply went to make breakfast for the family.</p>
+
+        <aside class="diary-pullquote"><span aria-hidden="true">♡</span><p>Most of my involvement?<br><strong>Plug it in. Press the button. Go and make breakfast.</strong></p></aside>
+
+        <h2>The mystery of the unlabelled door sensor</h2>
+        <p>There was a slightly embarrassing moment.</p>
+        <p>I'd labelled the front-door and back-door contacts in the app, but hadn't written anything on the actual devices. Two practically identical sensors were sitting in their packets.</p>
+        <p>I picked one, separated its parts to simulate a door opening, then put them together to simulate closing it.</p>
+        <p>And then I admitted to the agent that I wasn't actually sure which one I'd just used.</p>
+        <p>Could it tell me?</p>
+        <p>Yes. <strong>It was the back-door sensor.</strong></p>
+        <p>So I wrote “Back Door” on that one and “Front Door” on the other. Handling them caused a few more opening and closing events, which gave the system another chance to confirm their identities.</p>
+        <p>It's a tiny thing, but I loved it. We weren't just telling the software which device was which. We were asking it what had really happened, and it could show us.</p>
+
+        <h2>One house. One timeline.</h2>
+        <p>And then came the result I'd been hoping for.</p>
+        <p>The outdoor C425 camera had produced a recording. The D205 doorbell had a bell-associated recording in its local history. The door contact had reported opening and closing. And the spare S200B button had reported a real press.</p>
+        <p>HomePulse saved those events in <strong>one local timeline</strong> on the Raspberry Pi.</p>
+        <p>It wasn't guessing who had walked up to the house or whether somebody was safe. It was recording separate, factual observations from the actual devices, each with its own time and source.</p>
+        <p>That distinction is important. It's how we can eventually build useful context without pretending a sensor knows more than it does.</p>
+        <p>We also added a third door contact to the bench, this one representing the fridge. The agent could record its openings and match the time against the Bluetooth readings already arriving from our five receivers.</p>
+        <p>That's still a foundation for future investigation, not evidence that somebody has eaten anything. But it's exactly the sort of connection between ordinary household events I wanted to explore.</p>
+
+        <h2>And when something went wrong?</h2>
+        <p>We didn't just test the happy path.</p>
+        <p>The agent checked whether the hub could disappear and reconnect without losing the history we'd already saved. It tested recovering doorbell recording history after a simulated interruption to the Pi's access. It also checked camera restarts, repeated history reads and whether old events would accidentally be recorded twice.</p>
+        <p>Some tests weren't entirely straightforward. One walk past the outdoor camera didn't produce the expected recording. A later walk did, and HomePulse collected it. That sort of uncertainty is exactly why we're testing before taking the equipment to Mum's.</p>
+        <p>There was another useful engineering moment when an independent review spotted issues in how the camera collector handled incomplete history and clock differences. The agent corrected them, reran the checks and submitted the changes for review again.</p>
+        <p>The point isn't that AI gets everything right the first time. It doesn't. The point is that the work can still go through a disciplined engineering process, with evidence, review and corrections.</p>
+
+        <aside class="diary-milestone" aria-label="Day 2 verified bench results">
+          <span class="diary-chapter">WHAT WE HAD PROVED ON THE BENCH</span>
+          <strong>The gadgets were finally talking to one another.</strong>
+          <p>The Raspberry Pi could collect Tapo hub/button/contact events alongside recordings from the D205 doorbell and C425 camera, preserving original records when history was fetched again. A shared timeline showed events from all four sources.</p>
+          <p><strong>31 software tests passed</strong> on both the workstation and Raspberry Pi following the review fixes. The result was a working home bench, not a finished installation or a guarantee of safety.</p>
+        </aside>
+
+        <h2>Why this matters more than the gadgets</h2>
+        <p>I'm an engineer and a technical solutions architect. I could sit down and write this system myself, piece by piece.</p>
+        <p>But I'm also a dad, a partner and Mum's sole carer. I have a demanding job and a life that includes everything from swimming lessons to surfing.</p>
+        <p>I don't have unlimited evenings and weekends. More importantly, Mum doesn't benefit from a clever idea while it's sitting unfinished on my desk.</p>
+        <p>My role here is to make the architectural decisions, direct the agents, challenge the work, review the results and help with the physical world when needed. I don't need to personally type every instruction for the system to be properly engineered.</p>
+        <p><strong>The sooner we can get something genuinely useful and dependable into Mum's house, the sooner she gets the benefit of it.</strong></p>
+        <p>And that's a much better use of our time.</p>
+
+        <h2>Where Day 2 leaves us</h2>
+        <p>We now have a home bench collecting events from the hub, door contacts, button, doorbell and camera, alongside the Bluetooth foundation from Day 1.</p>
+        <p>There are still a few important tests to finish. In particular, we haven't fully proved the doorbell's live push behaviour, reliable local person classification, battery impact or what happens when a camera itself loses Wi-Fi. Room-level trolley positioning needs its own calibration too.</p>
+        <p>But we can now see the shape of HomePulse coming together.</p>
+        <p>What started with a lamp button on Mum's trolley is beginning to become a system that can join little moments from around a house into something meaningful.</p>
+        <p>And it all began today with a very early alarm clock I hadn't actually set.</p>
+      </div>
+
+      <nav class="diary-chapter-nav shell" aria-label="Diary chapter navigation">
+        <a class="diary-chapter-link" href="diary-day-1.html"><span>← PREVIOUS CHAPTER</span><strong>Day 1: The Bluetooth beacon</strong></a>
+        <div class="diary-chapter-soon"><span>UP NEXT</span><strong>The next stage</strong><small>More real-world testing before the equipment goes to Mum's house.</small></div>
+      </nav>
+    </article>
+    <section class="section disclaimer-section"><div class="shell disclaimer"><div class="disclaimer-icon" aria-hidden="true">i</div><div><h2>Still an experiment</h2><p>This chapter describes a home bench, not equipment commissioned at Mum's house. HomePulse is not a medical device, fall detector or emergency service. A device event cannot prove someone is present, safe or well. If you're concerned, contact them directly or arrange an appropriate check.</p></div></div></section>
+  </main>
+  <footer class="footer"><div class="shell footer-grid">
+    <div><div class="footer-title">Is Mum Dead Yet<span>?</span> <span aria-hidden="true">♡</span></div><p>Built with love, a Raspberry Pi, a handful of sensors and a slightly inappropriate sense of humour.</p></div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="questions.html">Real-life questions</a><a href="diary.html">Development diary</a><a href="https://github.com/is-mum-dead-yet/is-mum-dead-yet.github.io/issues">Share an idea</a></div>
+  </div><div class="shell footer-bottom"><span>A HomePulse storytelling experiment. Not a commercial product.</span><span>The name is a joke. The care behind it isn't.</span></div></footer>
+</body>
+</html>
