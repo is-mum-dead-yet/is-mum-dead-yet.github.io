@@ -56,3 +56,10 @@
 .diary-chapter-soon small{font-size:.74rem}
 @media(max-width:900px){.diary-hero-grid,.diary-index-grid{grid-template-columns:1fr}.diary-hero-note{max-width:400px;transform:rotate(1deg)}}
 @media(max-width:640px){.diary-hero{padding:60px 0 72px}.diary-hero h1,.diary-article-hero h1{font-size:clamp(3rem,11vw,4.7rem)}.diary-hero-note{padding:2rem}.diary-entry>a,.diary-entry>div{padding:1.45rem}.diary-entry h3{font-size:1.4rem}.diary-article-hero{padding:28px 0 58px}.diary-back{margin-bottom:2.3rem}.diary-prose{font-size:1rem;padding-top:40px}.diary-chapter-nav{flex-direction:column;padding-bottom:3.2rem}}
+
+/* Diary milestone: an evidence-led result without overstating deployment. */
+.diary-milestone{margin:3rem 0;padding:1.8rem 2rem;background:#f4f7ed;border:2px solid #c7dccf;border-radius:20px;box-shadow:6px 7px 0 #e3e9de}
+.diary-milestone>strong{display:block;font-size:clamp(1.25rem,2.6vw,1.8rem);letter-spacing:-.04em;line-height:1.25;margin:.5rem 0 1rem}
+.diary-milestone p{font-size:.95rem;line-height:1.65;margin-bottom:.75rem}
+.diary-milestone p:last-child{margin-bottom:0}
+@media(max-width:640px){.diary-milestone{padding:1.3rem 1.15rem}}
