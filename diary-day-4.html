@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9ed">
+  <meta name="description" content="Day 4 of the HomePulse diary. While I was feeling ill and at my son's school, an AI engineering agent built our first real dashboard from the Raspberry Pi's live test-bench data.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Day 4: Finally, Something I Can See | Is Mum Dead Yet?">
+  <meta property="og:description" content="A day off, a school meeting, and the first HomePulse dashboard showing real readings from our devices.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="questions.css">
+  <link rel="stylesheet" href="diary.css">
+  <title>Day 4: Finally, Something I Can See | Is Mum Dead Yet?</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="shell header-inner">
+    <a class="wordmark" href="index.html" aria-label="Is Mum Dead Yet? home"><span class="pulse-mark" aria-hidden="true">♡</span> <span>Is Mum Dead Yet<span class="accent">?</span></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html#idea">The idea</a>
+      <a href="questions.html">Real-life questions</a>
+      <a href="index.html#how-it-works">How it works</a>
+      <a href="diary.html" aria-current="page">Development diary</a>
+      <a class="nav-pill" href="index.html#build">Build your own <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div></header>
+  <main id="main">
+    <article>
+      <header class="diary-article-hero"><div class="shell">
+        <a class="diary-back" href="diary.html">← All diary chapters</a>
+        <div class="eyebrow"><span class="sparkle" aria-hidden="true">✳</span> THE DEVELOPMENT DIARY / DAY 4</div>
+        <h1>Finally, something <span>I can see.</span></h1>
+        <p class="diary-handwritten handwritten">And I wasn't even at my desk. ♡</p>
+        <p class="diary-article-lead">Four chapters in, HomePulse went from a collection of readings and engineering tools to a proper screen I could open and understand.</p>
+      </div></header>
+
+      <div class="diary-prose">
+        <p>I wasn't feeling particularly well today, so I decided to take the day off work.</p>
+        <p>Not exactly the day I'd have chosen for another big engineering push.</p>
+        <p>But I'd already given the AI engineering agent its next assignment. We had a Raspberry Pi collecting Bluetooth readings from five little receivers, and events from the Tapo hub, door contacts, button, doorbell and camera. We could interrogate the data, but you had to be rather technically minded to make sense of it.</p>
+        <p>I wanted to be able to <strong>see it</strong>.</p>
+        <p>Not lines of log messages. Not a database query. An actual HomePulse application, with a friendly screen showing the equipment, the recent events and whether anything had stopped reporting.</p>
+
+        <h2>The brief was already there</h2>
+        <p>This wasn't a case of asking an AI to invent a website and hoping it came back with something attractive.</p>
+        <p>I'd already asked for an application that fitted the HomePulse architecture. We had the work organised in a development ticket, along with design guidelines based on the public <em>Is Mum Dead Yet?</em> website.</p>
+        <p>I wanted something that looked warm and approachable, not a wall of developer diagnostics. There should be a home overview, a proper activity timeline, a way of checking the devices and a place for configuration tools when we were ready for them.</p>
+        <p>Most importantly, it had to use the <strong>real data already collected by the Pi</strong>. No invented readings to make a demonstration look better.</p>
+        <p>So I let the agent get on with the implementation.</p>
+
+        <h2>Meanwhile, I had somewhere else to be</h2>
+        <p>I had a meeting at my little boy's school.</p>
+        <p>And that's where I was while the software work carried on. I wasn't sitting at the computer watching somebody type code or hovering over an agent waiting to press Enter every few minutes.</p>
+        <p>I was at school, being a dad.</p>
+        <p>When I got back and checked what had happened, there was a screenshot waiting for me.</p>
+        <p><strong>A real HomePulse dashboard.</strong></p>
+        <p>And, frankly, I had a bit of a laugh. Because this was exactly the sort of thing I'd been describing to people about agentic development. The architecture and brief were in place, the agent could do the implementation, and I could get on with my life.</p>
+
+        <aside class="diary-pullquote"><span aria-hidden="true">♡</span><p>I went to a school meeting.<br><strong>I came back to a working dashboard.</strong></p></aside>
+
+        <h2>Five receivers. Three reporting sources. One screen.</h2>
+        <p>For the first time I could see the results without asking an agent to query the database for me.</p>
+        <p>The home screen showed five out of five Bluetooth receivers reporting. It showed the three main Tapo sources with recent successful checks. There was a card for the last recorded button press, and a timeline of recent camera and doorbell recording events.</p>
+        <p>And the separate Devices screen went further: individual receivers, their most recent signal readings, and the state of the smart-home devices were all laid out in something a human could actually read.</p>
+        <p>There was even a Setup tab waiting for the next stage.</p>
+        <p>I particularly liked the fact that the screen said <strong>HOME BENCH</strong>. Everything we were looking at was from the equipment being tested at my house, not Mum's activity. A test button press must never be mistaken for evidence that she's been up and about.</p>
+        <p>The trolley-location card was equally honest. It said calibration was still pending, because we haven't yet collected and verified the room measurements that would let us estimate the trolley's position.</p>
+        <p>That's precisely how I want HomePulse to behave. If it doesn't know something, it should say so.</p>
+
+        <aside class="diary-milestone" aria-label="Day 4 verified dashboard result">
+          <span class="diary-chapter">WHAT DAY 4 DELIVERED</span>
+          <strong>Our first usable HomePulse dashboard.</strong>
+          <p>Home, Activity, Devices and Setup screens, powered by actual data from the development Raspberry Pi. The interface keeps the bench clearly identified, distinguishes event times from receipt times, and doesn't pretend to know Mum's location yet.</p>
+          <p>The engineering pull request reported <strong>38 passing tests on both the workstation and Pi</strong>, including recovery after a restart and a Pi reboot. I checked the interface on Android, and the initial implementation review found no blocking changes for this local, read-only version.</p>
+        </aside>
+
+        <h2>Something to look at, not another thing to babysit</h2>
+        <p>Getting the screens to look nice isn't the whole story. The agent also had to make sure the interface didn't interfere with the equipment already collecting data.</p>
+        <p>The first version reads what HomePulse has recorded, rather than changing things. It runs locally on the Pi, isn't opened up to the public internet, and is designed to cope when a source is quiet or unavailable instead of simply showing a reassuring green message.</p>
+        <p>There's still work to do before the application is available privately from my phone when I'm away from home. And a friendly interface doesn't magically turn a bench experiment into a safety service.</p>
+        <p>But it's a huge improvement on opening a terminal and piecing together individual observations.</p>
+        <p>If you're curious what we actually built, you can <a href="https://github.com/digitalunity/homepulse/blob/54f5336/docs/review/issue-27/home-mobile-390.png" target="_blank" rel="noopener noreferrer">see the real mobile dashboard capture</a> or <a href="https://github.com/digitalunity/homepulse/blob/54f5336/docs/review/issue-27/home-desktop-1280.png" target="_blank" rel="noopener noreferrer">see the desktop view</a>. Both show test-bench data, not a fictional example.</p>
+
+        <h2>Why this particular day matters</h2>
+        <p>I've talked before about why I use agentic development. I'm perfectly capable of designing and implementing software, but I'm also a technical solutions architect with a busy job, a family, interests of my own and, of course, Mum to care for.</p>
+        <p>Today I wasn't well. And I had something important to do for my son.</p>
+        <p>Neither of those things should mean the project has to stop completely.</p>
+        <p>By getting the design, requirements and engineering process right, I could allow an agent to do the implementation, then inspect and review the result when I was available.</p>
+        <p>That saved me time, but it also let me be where I needed to be.</p>
+        <p><strong>I want Mum to benefit from this technology while she can, without missing the rest of family life in the process.</strong></p>
+
+        <h2>What happens next?</h2>
+        <p>Now we've got something we can actually see, I want to start using the application to <strong>configure the system</strong>, rather than relying on engineering tools for every setup task.</p>
+        <p>That means registering and assigning devices, eventually capturing labelled Bluetooth readings in known places, and getting us towards that original picture of the house with an honest estimate of where Mum's trolley might be.</p>
+        <p>Those configuration screens aren't working yet. Setup is currently a starting point, and the first dashboard is deliberately read-only. We'll need to build and test the next pieces before changing any real device configuration through it.</p>
+        <p>But that's a job for another day.</p>
+        <p>For now, Day 4 is complete as a milestone. We have a working interface I can look at, the engineering evidence to support it, and a clear path towards making it useful at Mum's.</p>
+        <p>Not bad for a day when I was meant to be resting.</p>
+      </div>
+
+      <nav class="diary-chapter-nav shell" aria-label="Diary chapter navigation">
+        <a class="diary-chapter-link" href="diary-day-3.html"><span>← PREVIOUS CHAPTER</span><strong>Day 3: Giving the Pi a way home</strong></a>
+        <div class="diary-chapter-soon"><span>WHAT'S NEXT</span><strong>Configuring HomePulse through the app</strong><small>Turning the first read-only screen into a practical setup experience.</small></div>
+      </nav>
+    </article>
+    <section class="section disclaimer-section"><div class="shell disclaimer"><div class="disclaimer-icon" aria-hidden="true">i</div><div><h2>A real interface, but not a safety service</h2><p>This chapter describes a local development dashboard with actual bench data. Device activity and signal readings cannot prove somebody is present, safe or well. Room positioning, remote viewing, setup tools and commissioning at Mum's remain separate work. HomePulse is not a medical device or emergency-response system.</p></div></div></section>
+  </main>
+  <footer class="footer"><div class="shell footer-grid">
+    <div><div class="footer-title">Is Mum Dead Yet<span>?</span> <span aria-hidden="true">♡</span></div><p>Built with love, a Raspberry Pi, a handful of sensors and a slightly inappropriate sense of humour.</p></div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="questions.html">Real-life questions</a><a href="diary.html">Development diary</a><a href="https://github.com/is-mum-dead-yet/is-mum-dead-yet.github.io/issues">Share an idea</a></div>
+  </div><div class="shell footer-bottom"><span>A HomePulse storytelling experiment. Not a commercial product.</span><span>The name is a joke. The care behind it isn't.</span></div></footer>
+</body>
+</html>
