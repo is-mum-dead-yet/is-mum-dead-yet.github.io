@@ -69,14 +69,16 @@
         <p>That last check matters. I don't want the maintenance system breaking the very thing it's supposed to help maintain.</p>
 
         <h2>And what about the little USB receivers?</h2>
-        <p>There's another reason I was particularly interested in doing this before installation.</p>
-        <p>When we move HomePulse to Mum's, the five Bluetooth receivers will need to connect to her Wi-Fi rather than the temporary network we've been using for testing.</p>
-        <p>The receivers are small, USB-powered devices. In principle, being able to connect one directly to the Raspberry Pi gives us a handy way to communicate with it without having to return it to my computer.</p>
-        <p>So we took a receiver that was physically plugged into the Pi and tried something simple through the remote maintenance session.</p>
-        <p><strong>Could the Pi identify it and tell us what software it was running?</strong></p>
-        <p>Yes. The session queried the receiver over USB, and it replied with its identity and firmware version.</p>
-        <p>That's a genuine, useful result. It proves the restricted remote connection can reach the Pi and perform a read-only conversation with the attached device.</p>
-        <p>It <em>doesn't</em> yet prove that we can safely change a receiver's Wi-Fi credentials remotely. That needs a separate test before I'd rely on it during installation. But we've removed one important unknown.</p>
+        <p>There's another, rather practical, reason I wanted remote access working before we took everything to Mum's.</p>
+        <p>At the moment, our five little AtomS3 Bluetooth receivers are configured for the temporary Wi-Fi network we've been using for testing. When they move to Mum's house, that network won't be there.</p>
+        <p>Traditionally, that might mean carting the receivers back to my computer, configuring them one by one and hoping they all reconnect when we install them.</p>
+        <p>But the Raspberry Pi will be at Mum's on <strong>Ethernet</strong>. If the broadband router is working, that gives us a much more useful starting point: a computer I can reach remotely, even while the tiny receivers don't yet know the new Wi-Fi details.</p>
+        <p>Here's the workflow I'm aiming for. I get the Pi connected and tell an authorised engineering agent that it's ready. When a receiver needs setting up, someone physically plugs it into the Pi's USB port. The agent can then identify the device, apply the approved network settings through the supported USB setup process, and check that it connects back to the Pi and starts sending its Bluetooth readings again.</p>
+        <p>In other words, I'd like my part to be something as simple as, <strong>“The Pi is connected. I've plugged the first Atom into it. Carry on.”</strong></p>
+        <p>That's potentially useful not just during the first installation. If Mum's router or Wi-Fi details change later, we could repeat the same process rather than rebuilding the whole system or needing a separate computer on site.</p>
+        <p>We have already proved an important part of this: from a restricted remote session, the Pi queried a real AtomS3 over USB and received its identity and firmware version.</p>
+        <p><strong>But here's the engineering distinction:</strong> we have <em>not yet</em> proved writing fresh Wi-Fi credentials through that restricted session, or the full reconnect-and-recovery sequence. That still needs a controlled test on a spare receiver, along with a suitably authorised way to supply the credentials securely. I won't call something automatic until we've actually demonstrated it.</p>
+        <p>Still, it gives us a sensible plan for the next network change. And, once again, it means the technology asks less of Mum.</p>
 
         <aside class="diary-milestone" aria-label="Day 3 verified result">
           <span class="diary-chapter">WHAT DAY 3 PROVED</span>
