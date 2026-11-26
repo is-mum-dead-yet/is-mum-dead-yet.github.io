@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9ed">
+  <meta name="description" content="The HomePulse development diary: private remote access over Tailscale, tested on Android mobile data, while life carries on away from the desk.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Day 5: Beyond the House | Is Mum Dead Yet?">
+  <meta property="og:description" content="The HomePulse development diary: private remote access over Tailscale, tested on Android mobile data, while life carries on away from the desk.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="questions.css">
+  <link rel="stylesheet" href="diary.css">
+  <title>Day 5: Beyond the House | Is Mum Dead Yet?</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="shell header-inner">
+    <a class="wordmark" href="index.html" aria-label="Is Mum Dead Yet? home"><span class="pulse-mark" aria-hidden="true">♡</span> <span>Is Mum Dead Yet<span class="accent">?</span></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html#idea">The idea</a>
+      <a href="questions.html">Real-life questions</a>
+      <a href="index.html#how-it-works">How it works</a>
+      <a href="diary.html" aria-current="page">Development diary</a>
+      <a class="nav-pill" href="index.html#build">Build your own <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div></header>
+  <main id="main">
+    <article>
+      <header class="diary-article-hero"><div class="shell">
+        <a class="diary-back" href="diary.html">← All diary chapters</a>
+        <div class="eyebrow"><span class="sparkle" aria-hidden="true">✳</span> THE DEVELOPMENT DIARY / DAY 5</div>
+        <h1>Beyond <span>the house.</span></h1>
+        <p class="diary-handwritten handwritten">HomePulse at home. Me somewhere else. ♡</p>
+        <p class="diary-article-lead">The first dashboard was working. Now I needed it to be useful even when I wasn't in the same building.</p>
+      </div></header>
+      <div class="diary-prose"><p>By now I had a rather nice HomePulse dashboard running on a Raspberry Pi at home.</p>
+<p>I could look at the Bluetooth receivers, check the Tapo activity timeline and see which bits of the system were reporting. That was a big improvement on reading logs or getting an AI agent to query the database for me.</p>
+<p>But there was a fairly obvious problem.</p>
+<p><strong>What use is a home-awareness dashboard if I can only see it when I'm at home?</strong></p>
+<p>The whole point of this project is that I want some useful context when I'm somewhere else. Especially when the equipment eventually moves to Mum's.</p>
+<h2>One ticket. One tidy desk.</h2>
+<p>So I gave my agent the next job: make HomePulse privately accessible from my phone or laptop, without opening Mum's eventual home network to the public internet.</p>
+<p>Then I got on with cleaning my desk.</p>
+<p>Really, that's about as exciting as my physical contribution was.</p>
+<p>We'd already thought through the architecture. AWS Systems Manager was working for restricted engineering maintenance, but that's not what I wanted for everyday viewing. I didn't want to open an engineering console every time I fancied checking the dashboard.</p>
+<p>The chosen approach was Tailscale, a private network between devices I authorise. The agent set up a secure HTTPS route to the existing dashboard, while keeping the Raspberry Pi's other services out of reach over that connection.</p>
+<p>No public website exposing the data. No router port forwarding. And no reason for Mum to learn another piece of technology.</p>
+<h2>Does it really work when I'm away?</h2>
+<p>Once the setup was complete, I tried it on my Android phone using mobile data with Wi-Fi switched off.</p>
+<p><strong>HomePulse opened.</strong></p>
+<p>I could see the same genuine test-bench information, now through the private connection.</p>
+<p>Then I turned Tailscale off and tried opening the page in a fresh tab. This time it couldn't connect.</p>
+<p>That's exactly what I wanted: access when I'm authorised, no accidental public access when I'm not.</p>
+<p>I was even thinking it would be rather fun to check it while having a break from skating, just to make the point that I could be doing something completely unrelated to software and still look in on the system. The mobile-data test had already demonstrated remote access; that would be an everyday-life check rather than a claim of a new technical breakthrough.</p>
+<aside class="diary-pullquote"><span aria-hidden="true">♡</span><p>HomePulse was at home.<br><strong>I didn't have to be.</strong></p></aside>
+<h2>It also needed to survive a restart</h2>
+<p>The agent didn't just make a private link and call the job done.</p>
+<p>It checked that the dashboard still worked locally if the private networking service stopped, that the separate engineering maintenance route remained available, and that the connection came back after a real Raspberry Pi reboot.</p>
+<p>It also verified that the services behind HomePulse, including the Bluetooth and Tapo collection, were still doing their jobs.</p>
+<p>That matters because a remote dashboard is only useful if it tells the truth about how fresh its information is. A camera whose history was last checked an hour ago is not the same as a live notification, and a Pi that's offline can't magically show new readings.</p>
+<aside class="diary-milestone" aria-label="Day 5 verified result">
+  <span class="diary-chapter">WHAT WE ACTUALLY PROVED</span>
+  <strong>Private remote viewing from my phone.</strong>
+  <p>The bench dashboard loaded over Tailscale on Android with mobile data. It was inaccessible in a fresh tab after Tailscale disconnected. The engineering evidence also records recovery after a Pi reboot, restricted network access and <strong>41 passing tests</strong> on both the workstation and Pi.</p>
+  <p>It was still a home bench, not a commissioned system at Mum's house.</p>
+</aside>
+<h2>Why I care about such a boring-sounding feature</h2>
+<p>Remote access doesn't have the visual appeal of the dashboard or the novelty of the Bluetooth sensors. But to me it's one of the most useful parts of the project.</p>
+<p>I'm Mum's sole carer, and I have a family and a busy job. I want to spend my time being useful to the people who need me, rather than making unnecessary journeys to look at a computer screen.</p>
+<p>Once HomePulse is installed and properly tested at Mum's, being able to check its evidence without being physically there should make a real difference.</p>
+<p>And it's another reminder of why I use agentic development. I supplied the objective and the architectural constraints, the agent carried out the implementation and tests, and I checked the real-world result on my phone.</p>
+<p>All while I'd been tidying my desk.</p>
+<p><strong>Now the next job is to make the dashboard useful for setting up the house, not just watching the equipment.</strong></p></div>
+      <nav class="diary-chapter-nav shell" aria-label="Diary chapter navigation">
+        <a class="diary-chapter-link" href="diary-day-4.html"><span>← PREVIOUS CHAPTER</span><strong>Day 4: Finally, something I can see</strong></a>
+        <a class="diary-chapter-link" href="diary-day-6.html"><span>NEXT CHAPTER →</span><strong>Day 6: Teaching the house where things are</strong></a>
+      </nav>
+    </article>
+    <section class="section disclaimer-section"><div class="shell disclaimer"><div class="disclaimer-icon" aria-hidden="true">i</div><div><h2>Still a home experiment</h2><p>HomePulse is not a medical device, fall detector or emergency-response service. All readings in this chapter are from a separate home test bench, not Mum's live activity. A sensor observation cannot establish that someone is present, safe or well. If concerned about somebody, contact them directly or arrange a check.</p></div></div></section>
+  </main>
+  <footer class="footer"><div class="shell footer-grid">
+    <div><div class="footer-title">Is Mum Dead Yet<span>?</span> <span aria-hidden="true">♡</span></div><p>Built with love, a Raspberry Pi, a handful of sensors and a slightly inappropriate sense of humour.</p></div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="questions.html">Real-life questions</a><a href="diary.html">Development diary</a><a href="https://github.com/is-mum-dead-yet/is-mum-dead-yet.github.io/issues">Share an idea</a></div>
+  </div><div class="shell footer-bottom"><span>A HomePulse storytelling experiment. Not a commercial product.</span><span>The name is a joke. The care behind it isn't.</span></div></footer>
+</body>
+</html>
