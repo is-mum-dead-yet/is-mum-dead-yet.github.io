@@ -65,7 +65,7 @@
 <p>The real-world experiment exposed the flaw.</p>
 <p>Imagine a receiver positioned near the garden. Should it have to hear the beacon when the trolley is at the far end of the house? Of course not. And a receiver that is healthy but too far away to hear the beacon is a different problem from one that's lost power or gone offline.</p>
 <p>Those differences could actually help us identify locations, provided we record them honestly rather than inventing a very weak signal where none was observed.</p>
-<p>So instead of moving receivers around just to satisfy the software, I've raised another engineering issue.</p>
+<p>So instead of moving receivers around just to satisfy the software, I've raised <a href="https://github.com/digitalunity/homepulse/issues/33" target="_blank" rel="noopener noreferrer">another engineering issue</a> to tackle the problem.</p>
 <p>The agent now has a job to investigate weak signals, intermittent observations, genuine non-detection and receivers that are unavailable altogether, and to make sure HomePulse can tell those situations apart.</p>
 <p>It also has to think ahead. If one receiver goes offline after we've installed the system, HomePulse should still be able to make a cautious estimate from the remaining trustworthy readings <em>when the evidence supports it</em>, instead of assuming the entire house has gone quiet. If the readings can't distinguish two places, it should say the location is uncertain.</p>
 <p>And the doorbell, button and other activity collection should carry on regardless.</p>
